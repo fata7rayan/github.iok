@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supposed - Random Media Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        #media-container {
+            margin-top: 20px;
+        }
+        video, audio {
+            margin-top: 20px;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Supposed - Random Media Player</h1>
+    <div id="media-container">
+        <video id="videoPlayer" controls style="display:none;"></video>
+        <audio id="audioPlayer" controls style="display:none;"></audio>
+    </div>
+
+    <script>
+        // List of video URLs
+        const videos = [
+            "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+            "http://techslides.com/demos/sample-videos/small.mp4",
+            "http://www.sample-videos.com/video123/mp4/480/asdasdas.mp4"
+        ];
+
+        // List of audio URLs
+        const audios = [
+            "http://www.sample-videos.com/audio/mp3/crowd-cheering.mp3",
+            "http://www.sample-videos.com/audio/mp3/wave.mp3",
+            "http://www.sample-videos.com/audio/mp3/rock.mp3"
+        ];
+
+        // Function to play random media
+        function playRandomMedia() {
+            const mediaType = Math.random() < 0.5 ? 'video' : 'audio';
+            if (mediaType === 'video') {
+                const randomVideo = videos[Math.floor(Math.random() * videos.length)];
+                const videoPlayer = document.getElementById('videoPlayer');
+                videoPlayer.src = randomVideo;
+                videoPlayer.style.display = 'block';
+                videoPlayer.play();
+            } else {
+                const randomAudio = audios[Math.floor(Math.random() * audios.length)];
+                const audioPlayer = document.getElementById('audioPlayer');
+                audioPlayer.src = randomAudio;
+                audioPlayer.style.display = 'block';
+                audioPlayer.play();
+            }
+        }
+
+        // Call the function to play random media when the page loads
+        window.onload = playRandomMedia;
+    </script>
+</body>
+</html>
